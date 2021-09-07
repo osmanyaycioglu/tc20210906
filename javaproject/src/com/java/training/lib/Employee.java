@@ -22,5 +22,10 @@ public class Employee {
         this.height = heightParam;
     }
 
+    @Override
+    public String toString() {
+        return "Employee [name=" + this.name + ", height=" + this.height + "]";
+    }
+
 
 }
