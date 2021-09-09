@@ -14,5 +14,4 @@ public class Asker {
         this.h.atesEt();
     }
 
-
 }
