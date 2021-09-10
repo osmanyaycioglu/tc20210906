@@ -14,5 +14,10 @@ public class FlyingState extends AbstractRobotState {
         this.robotCurrentState.setCurrentState(new RunningState(this.robotCurrentState));
     }
 
+    @Override
+    public void accept(final IObserver observerParam) {
+        observerParam.statusChanged(this);
+    }
+
 
 }

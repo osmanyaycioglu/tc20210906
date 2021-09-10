@@ -14,4 +14,6 @@ public interface IMoveState {
     void setCurrentState(AbstractRobotState moveStateParam);
 
     ERobotState getErs();
+
+    public void accept(final IObserver observerParam);
 }

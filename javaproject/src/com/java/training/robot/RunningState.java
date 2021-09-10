@@ -26,4 +26,10 @@ public class RunningState extends AbstractRobotState {
         System.out.println("[Running] state to [Flying] State");
         this.robotCurrentState.setCurrentState(new FlyingState(this.robotCurrentState));
     }
+
+    @Override
+    public void accept(final IObserver observerParam) {
+        observerParam.statusChanged(this);
+    }
+
 }

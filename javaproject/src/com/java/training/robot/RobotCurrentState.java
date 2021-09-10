@@ -5,12 +5,20 @@ import java.util.List;
 
 public class RobotCurrentState implements IMoveState {
 
-    private IMoveState                     ms        = new StandingState(this);
+    private IMoveState                     ms         = new StandingState(this);
 
-    private final List<IObserveRobotState> observers = new ArrayList<>();
+    private final List<IObserveRobotState> observers  = new ArrayList<>();
 
-    public void register(final IObserveRobotState robotStateParam) {
+    private final List<IObserver>          observers2 = new ArrayList<>();
+
+    public RobotCurrentState register(final IObserveRobotState robotStateParam) {
         this.observers.add(robotStateParam);
+        return this;
+    }
+
+    public RobotCurrentState register(final IObserver robotStateParam) {
+        this.observers2.add(robotStateParam);
+        return this;
     }
 
     @Override
@@ -37,6 +45,9 @@ public class RobotCurrentState implements IMoveState {
     @Override
     public void setCurrentState(final AbstractRobotState moveStateParam) {
         this.ms = moveStateParam;
+        for (IObserver iObserveRobotStateLoc : this.observers2) {
+            this.ms.accept(iObserveRobotStateLoc);
+        }
         for (IObserveRobotState iObserveRobotStateLoc : this.observers) {
             switch (this.ms.getErs()) {
                 case STANDING:
@@ -65,5 +76,11 @@ public class RobotCurrentState implements IMoveState {
     @Override
     public ERobotState getErs() {
         return this.ms.getErs();
+    }
+
+    @Override
+    public void accept(final IObserver observerParam) {
+        // TODO Auto-generated method stub
+
     }
 }
