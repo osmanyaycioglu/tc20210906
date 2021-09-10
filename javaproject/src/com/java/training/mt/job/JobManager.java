@@ -2,6 +2,7 @@ package com.java.training.mt.job;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 public class JobManager {
 
@@ -18,7 +19,8 @@ public class JobManager {
         //            }
         //        }
 
-        return this.strQueue.take();
+        return this.strQueue.poll(10,
+                                  TimeUnit.SECONDS);
     }
 
     public void add(final String str) {
