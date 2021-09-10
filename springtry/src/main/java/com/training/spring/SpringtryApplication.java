@@ -3,7 +3,9 @@ package com.training.spring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,6 +17,8 @@ import com.training.spring.oo.IGreet;
 
 @SpringBootApplication
 @EnableScheduling
+@ServletComponentScan
+@EnableAspectJAutoProxy
 //@Controller
 //@Service
 //@Configuration
