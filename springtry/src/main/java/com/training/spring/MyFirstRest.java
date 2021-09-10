@@ -1,5 +1,8 @@
 package com.training.spring;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
@@ -52,6 +55,13 @@ public class MyFirstRest {
     @GetMapping("/hello3")
     public String hello3() {
         return this.mcb.xyz("osman");
+    }
+
+    @GetMapping("/hello5")
+    public String hello5() throws InterruptedException, ExecutionException {
+        Future<String> xyzStrLoc = this.mcb.xyzStr("osman");
+        System.out.println("Async started");
+        return xyzStrLoc.get();
     }
 
     @GetMapping("/hello4")

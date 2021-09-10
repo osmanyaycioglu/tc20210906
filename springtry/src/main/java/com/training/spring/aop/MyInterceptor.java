@@ -28,7 +28,7 @@ public class MyInterceptor {
         System.out.println("after returning çalıştı");
     }
 
-    @Around("execution(* com.training.spring.MyConfigBean.*(..))")
+    @Around("execution(* com.training.spring.MyConfigBean.xyz(..))")
     public Object control(final ProceedingJoinPoint jp) {
         try {
             Object[] argsLoc = jp.getArgs();
